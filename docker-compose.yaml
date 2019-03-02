@@ -1,0 +1,15 @@
+version: "3.0"
+services:
+  server:
+    image: tiagoti2/python:3.6
+    tty: true
+    working_dir: /app
+    expose:
+      - "8080"
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=80
+    volumes:
+      - .:/app
+    command: ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--threads", "2", "wsgi:app"]
