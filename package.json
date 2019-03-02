@@ -1,0 +1,25 @@
+{
+  "name": "yourcont_email_tools",
+  "version": "1.0.0",
+  "description": "## Docker e Docker Compose Para facilitar o deploy e testes fizemos o uso docker para instalar as libs e do docker-compose para rodar o app com maior facilidade",
+  "main": "tools/css-file-to-inline.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "inline-css": "^2.4.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TiagoTi/yourcont_email_tools.git"
+  },
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/TiagoTi/yourcont_email_tools/issues"
+  },
+  "homepage": "https://github.com/TiagoTi/yourcont_email_tools#readme"
+}

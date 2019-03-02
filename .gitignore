@@ -105,3 +105,6 @@ venv.bak/
 
 # InteliJ
 .idea/
+
+node_modules/
+package-lock.json
