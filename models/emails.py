@@ -39,22 +39,21 @@ class Email:
 
 class WelcomeEmail(Email):
     def __init__(self, **kwargs):
-        kwargs['text'] = self._template('txt', kwargs['to_name'])
-        kwargs['html'] = self._template('html', kwargs['to_name'])
+        kwargs['text'] = self.template('txt', kwargs['to_name'])
+        kwargs['html'] = self.template('html', kwargs['to_name'])
         super(WelcomeEmail, self).__init__(**kwargs)
         self._subject = 'Your Cont {}!'.format(kwargs['to_name'])
         self._files_names_images = ['file.jpg']
 
-    def _template(self, ext, name):
+    @staticmethod
+    def template(ext, name):
         return load_tmp(
             'templates',
             'email',
             'welcome_to_your_cont', ext).format(name)
 
-
     def to_html(self):
         return self._html
-
 
     def to_text(self):
         return self._text
