@@ -1,4 +1,15 @@
 {%extends "template.html"%}
 {% block conteudo%}
-<h1>Index</h1>
+<div  class="row">
+    {% for email in cards_email %}
+        <div class="card col-3" >
+          <img src="{{email.image_filename}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{email.title}}</h5>
+            <p class="card-text">{{email.description}}</p>
+            <a href="{{email.path_link}}" class="btn btn-primary">Escreva!</a>
+          </div>
+        </div>
+    {% endfor %}
+</div>
 {% endblock %}

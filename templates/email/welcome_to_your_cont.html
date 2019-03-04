@@ -8,13 +8,20 @@
 	</head>
 
 	<body style="background-color: #f6f6f6; color: #5a5c60; font-family: 'Helvetica Neue',Helvetica, Arial, sans-serif; font-size: 16px; height: 100%; line-height: 1.6; padding: 0px;">
-		<div id="maindiv" style="align-content: center; box-sizing: border-box; font-size: 14px; margin: 0px auto; min-height: 100%; padding-bottom: 1em; position: relative; width: 700px;">
-			<header style="background-color: #f6f6f6; padding: 20px;">
-				<img alt src="cid:file.jpg" style="height: auto; width: 100%;">
-				<img alt src="../../../static/img/file.jpg" style="height: auto; width: 100%;">
+		<div id="maindiv" style="align-content: center; box-sizing: border-box; font-size: 14px; margin: 0px auto; min-height: 100%; padding-bottom: 1em; position: relative; width: 700px !important;">
+			<header>
+				<div class="youcont_bg logo" style="background-color: #828AC5; max-width: 250px; padding: 5px;">
+					<img alt width="250px" src="cid:logo.png">
+					<!--<img alt=""  width="250px" src="../../../static/email/img/logo.png" />-->
+				</div>
+
+				<div>
+					<img alt class="header_img" src="cid:file.jpg">
+					<!--<img alt="" class="header_img" width="700px" src="../../../static/email/img/file.jpg" />-->
+				</div>
 			</header>
 
-			<article style="background-color: #f6f6f6; font-size: 16px; margin-bottom: 100px; padding: 20px;">
+			<article style="font-size: 16px; margin-bottom: 100px;">
 				<h3>
 					Olá <samp class="usuario_destacado" style="color: #000; font-weight: bolder;">{0}!</samp>
 				</h3>
@@ -29,15 +36,20 @@
 			</article>
 
 
-			<footer style="background-color: #5f0b8a; bottom: 0; display: flex; justify-content: space-between; padding: 20px; position: absolute; width: 100%;">
+			<footer style="background-color: #828AC5; bottom: 0; display: flex; justify-content: space-between; padding: 20px; position: absolute; width: 100%;">
 				<div class="left" style="text-align: left;">
-					<h4><a href="#">facebook</a></h4>
+					<a href="#">
+						<img class="my_net_icon" alt src="cid:face.png" style="background: #f6f6f6; border: 2px solid #000; height: 20px; margin: 4px; padding: 3px; width: 20px;">
+						<!--<img class="my_net_icon" alt="" src="../../../static/email/img/face.png" />-->
+					</a>
+					<a href="#">
+						<img class="my_net_icon" alt src="cid:insta.png" style="background: #f6f6f6; border: 2px solid #000; height: 20px; margin: 4px; padding: 3px; width: 20px;">
+						<!--<img class="my_net_icon" alt="" src="../../../static/email/img/insta.png" />-->
+					</a>
 				</div>
 				<div class="center" style="text-align: center;">
-						<h4><a href="#">insta</a></h4>
 				</div>
 				<div class="right" style="text-align: right;">
-						<h4><a href="#">youtube</a></h4>
 				</div>
 			</footer>
 		</div>
