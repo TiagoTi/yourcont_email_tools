@@ -13,6 +13,7 @@ class Email:
         self._text = kwargs['text']
         self._html = kwargs['html']
         self._files_names_images = []
+        self._files_attachement = []
         self._did_send = False
 
     @property
@@ -34,7 +35,11 @@ class Email:
         }
 
     def send(self):
-        self._did_send = send_mailgin_email(self.to_payload, self._files_names_images)
+        self._did_send = send_mailgin_email(
+            self.to_payload,
+            self._files_names_images,
+            self._files_attachement
+        )
 
     @staticmethod
     def template(ext, name, template_name):
@@ -63,10 +68,11 @@ class WelcomeEmail(Email):
 class ContractEmail(Email):
 
     def __init__(self, **kwargs):
-        kwargs['text'] = self.template('txt', kwargs['to_name'], 'welcome_to_your_cont')
-        kwargs['html'] = self.template('html', kwargs['to_name'], 'welcome_to_your_cont')
+        kwargs['text'] = self.template('txt', kwargs['to_name'], 'contact_for_contract_data')
+        kwargs['html'] = self.template('html', kwargs['to_name'], 'contact_for_contract_data')
         super(ContractEmail, self).__init__(**kwargs)
         self._subject = 'Your Cont {}!'.format(kwargs['to_name'])
-        self._files_names_images = ['file.jpg', 'logo.png', 'face.png', 'insta.png']
+        self._files_names_images = ['document_image.png', 'logo.png', 'face.png', 'insta.png']
+        self._files_attachement = kwargs['files_names']
 
 

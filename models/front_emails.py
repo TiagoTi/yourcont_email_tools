@@ -27,7 +27,7 @@ def cards_email():
     emails + CardEmail(
         'welcome to your cont',
         'Email de quando o cliente entra para youcont',
-        'winner.png',
+        'teamwork.png',
         'welcome_to_your_cont_wiki'
     )
 
@@ -35,7 +35,7 @@ def cards_email():
     emails + CardEmail(
         'adecimento ao cliente',
         'Adecer ao cliente por escolher a youcont',
-        'teamwork.png',
+        'winner.png',
         'welcome_to_your_cont'
     )
 
@@ -43,7 +43,7 @@ def cards_email():
     emails + CardEmail(
         'Solicitação de Dados',
         'Email padrão de solicitação dos dados do cliente',
-        'winner.png',
+        'dossier.png',
         'contact_for_contract_data'
     )
 
