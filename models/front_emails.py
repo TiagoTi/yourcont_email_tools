@@ -39,12 +39,20 @@ def cards_email():
         'welcome_to_your_cont'
     )
 
-    # 3 Contrato
+    # 3 Contract
     emails + CardEmail(
         'Solicitação de Dados',
         'Email padrão de solicitação dos dados do cliente',
         'dossier.png',
         'contact_for_contract_data'
+    )
+
+    # 4 Meteenging
+    emails + CardEmail(
+        'Convite para Reunião',
+        'Email padrão de solicitação dos dados do cliente',
+        'dossier.png',
+        'meeting_email'
     )
 
     return emails

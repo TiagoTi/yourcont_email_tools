@@ -1,6 +1,8 @@
 import os
 from flask import Flask, render_template, request, redirect
-from models.emails import WelcomeEmail, ContractEmail
+
+from tasks import contract_email_task
+from models.emails import WelcomeEmail
 from models.front_emails import cards_email
 
 app = Flask(__name__)
@@ -30,17 +32,13 @@ def welcome_to_your_cont():
 def contact_for_contract_data():
     if request.method == 'POST':
         files_names = request.form.getlist('files_names')
-        print(files_names)
-        contact_for_contract_data_email = ContractEmail(
+
+        contract_email_task.delay(
             to=request.form['email'],
             to_name=request.form['name'],
             files_names=files_names
         )
-        contact_for_contract_data_email.send()
-        if contact_for_contract_data_email.did_send:
-            return redirect('/')
-        else:
-            return render_template('contact_for_contract_data_error.html')
+        return redirect('/')
     else:
         files_names = []
         i = 0
