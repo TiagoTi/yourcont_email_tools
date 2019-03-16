@@ -100,6 +100,9 @@ venv.bak/
 # mkdocs documentation
 /site
 
+# sonar
+.scannerwork/
+
 # mypy
 .mypy_cache/
 

@@ -15,7 +15,6 @@ def test_card():
 
 
 def test_cards():
-    titulo = "titulo do card 1"
     descricao = "Desc Card"
     url_image = "imagem.png"
     path_url = "card"

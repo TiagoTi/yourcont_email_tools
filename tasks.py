@@ -1,9 +1,10 @@
 import time
+from settings import RABBITMQ_DEFAULT_USER, RABBITMQ_DEFAULT_HOST
 from celery import Celery
-from models.emails import  ContractEmail
+from models.emails import ContractEmail
 
-# app = Celery('tasks', broker='pyamqp://guest@queue_server//')
-app = Celery('tasks', broker='pyamqp://guest@localhost//')
+app = Celery('tasks', broker=f'pyamqp://{RABBITMQ_DEFAULT_USER}@{RABBITMQ_DEFAULT_HOST}//')
+
 
 @app.task
 def add(x, y):

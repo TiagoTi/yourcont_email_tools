@@ -19,23 +19,23 @@ services:
       - worker
     links:
       - queue
-  worker:
-    container_name: worker
-    image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}
-    tty: true
-    working_dir: /app
-    volumes:
-      - .:/app
-    command: ["celery", "-A", "tasks", "worker"]
-    depends_on:
-      - queue
-    links:
-      - queue
-  queue:
-    container_name: queue_server
-    image: rabbitmq
-    ports:
-      - "5672:5672"
-      - "25672:25672"
-      - "4369:4369"
-    tty: true
+#  worker:
+#    container_name: worker
+#    image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}
+#    tty: true
+#    working_dir: /app
+#    volumes:
+#      - .:/app
+#    command: ["celery", "-A", "tasks", "worker"]
+#    depends_on:
+#      - queue
+#    links:
+#      - queue
+#  queue:
+#    container_name: queue_server
+#    image: rabbitmq
+#    ports:
+#      - "5672:5672"
+#      - "25672:25672"
+#      - "4369:4369"
+#    tty: true
