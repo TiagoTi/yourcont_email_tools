@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template, request, redirect
-
+from settings import ADDRESS_WEB, PORT_WEB
 from tasks import contract_email_task
 from models.emails import WelcomeEmail, ContractEmail
 from models.front_emails import cards_email
@@ -88,4 +88,4 @@ def contact_for_contract_data():
 
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host=ADDRESS_WEB, port=PORT_WEB, debug=True)
