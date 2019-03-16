@@ -62,7 +62,7 @@ class WelcomeEmail(Email):
         kwargs['html'] = self.template('html', kwargs['to_name'], 'welcome_to_your_cont')
         super(WelcomeEmail, self).__init__(**kwargs)
         self._subject = 'Your Cont {}!'.format(kwargs['to_name'])
-        self._files_names_images = ['file.jpg', 'logo.png', 'face.png', 'insta.png']
+        self._files_names_images = ['file.jpg', 'logo_slim.png', 'face.png', 'insta.png']
 
 
 class ContractEmail(Email):

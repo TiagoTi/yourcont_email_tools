@@ -2,7 +2,7 @@ version: "3.0"
 services:
   server:
     container_name: web_server
-    image: tiagoti2/python:3.6.0001
+    image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}
     tty: true
     working_dir: /app
     expose:
@@ -13,7 +13,7 @@ services:
       - PORT=80
     volumes:
       - .:/app
-    command: ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "2", "--threads", "2", "wsgi:app"]
+    command: ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "--threads", "1", "wsgi:app"]
     depends_on:
       - queue
       - worker
@@ -21,7 +21,7 @@ services:
       - queue
   worker:
     container_name: worker
-    image: tiagoti2/python:3.6.0001
+    image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}
     tty: true
     working_dir: /app
     volumes:
@@ -39,4 +39,3 @@ services:
       - "25672:25672"
       - "4369:4369"
     tty: true
-

@@ -1,9 +1,9 @@
 class CardEmail:
-    def __init__(self, title, desc, img, path):
+    def __init__(self, title, desc, img, method_name):
         self.title = title.title()
         self.description = desc
         self.image_filename = f'/static/img/cards/{img}'
-        self.path_link = f'/{path}'
+        self.method = method_name
 
 
 class ListOfCards:
@@ -24,16 +24,15 @@ def cards_email():
     emails = ListOfCards([])
 
     # 1 Welcome
-    emails + CardEmail(
-        'welcome to your cont',
-        'Email de quando o cliente entra para youcont',
-        'teamwork.png',
-        'welcome_to_your_cont_wiki'
-    )
+    # emails + CardEmail(
+    #     'Saudação',
+    #     'Email de quando o cliente envia seu dados iniciais para o youcont! Enviado Pelo Wix',
+    #     'teamwork.png',
+    #     'greeting')
 
     # 2 Agradecimentos
     emails + CardEmail(
-        'adecimento ao cliente',
+        'Agradecimento',
         'Adecer ao cliente por escolher a youcont',
         'winner.png',
         'welcome_to_your_cont'
@@ -41,18 +40,18 @@ def cards_email():
 
     # 3 Contract
     emails + CardEmail(
-        'Solicitação de Dados',
-        'Email padrão de solicitação dos dados do cliente',
+        'Contrato / Solicitação de docs',
+        'Envia cópia do contrato e solicita documentação',
         'dossier.png',
         'contact_for_contract_data'
     )
-
-    # 4 Meteenging
-    emails + CardEmail(
-        'Convite para Reunião',
-        'Email padrão de solicitação dos dados do cliente',
-        'dossier.png',
-        'meeting_email'
-    )
+    #
+    # # 4 Meteenging
+    # emails + CardEmail(
+    #     'Convite para Reunião',
+    #     'Email padrão de solicitação dos dados do cliente',
+    #     'dossier.png',
+    #     'meeting_email'
+    # )
 
     return emails
