@@ -7,7 +7,7 @@
           <div class="card-body">
             <h5 class="card-title">{{email.title}}</h5>
             <p class="card-text">{{email.description}}</p>
-            <a href="{{email.path_link}}" class="btn btn-primary">Escreva!</a>
+            <a href="{{url_for(email.method)}}" class="btn btn-primary">Escreva!</a>
           </div>
         </div>
     {% endfor %}

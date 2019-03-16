@@ -72,7 +72,7 @@ class ContractEmail(Email):
         kwargs['html'] = self.template('html', kwargs['to_name'], 'contact_for_contract_data')
         super(ContractEmail, self).__init__(**kwargs)
         self._subject = 'Your Cont {}!'.format(kwargs['to_name'])
-        self._files_names_images = ['document_image.png', 'logo.png', 'face.png', 'insta.png']
+        self._files_names_images = ['service-contract.png', 'logo_slim.png', 'face.png', 'insta.png']
         self._files_attachement = kwargs['files_names']
 
 

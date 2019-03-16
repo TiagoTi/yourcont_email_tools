@@ -10,13 +10,37 @@ app = Flask(__name__)
 #cards
 cards_email = cards_email()
 
+
 @app.route('/')
 def home():
-    return render_template('index.html', cards_email=cards_email)
+    """
+    This route is the initial from YourCount Email Tools.
+    Render the *index.html*.
+    Must be protected by authentication;
+    """
+    return render_template(
+        'index.html',
+        cards_email=cards_email
+    )
+
+
+@app.route('/greeting', methods=['GET', 'POST'])
+def greeting():
+    """
+    The greeting email is send by website.
+    """
+    if request.method == 'POST':
+        return redirect('/')
+    else:
+        return render_template('greeting.html')
 
 
 @app.route('/welcome_to_your_cont', methods=['GET', 'POST'])
 def welcome_to_your_cont():
+    """
+    The second email
+    this route exits to tell to costumer about us feeling.
+    """
     if request.method == 'POST':
         welcome_email = WelcomeEmail(to=request.form['email'], to_name=request.form['name'])
         welcome_email.send()

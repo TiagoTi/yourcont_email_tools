@@ -2,7 +2,8 @@ import time
 from celery import Celery
 from models.emails import  ContractEmail
 
-app = Celery('tasks', broker='pyamqp://guest@queue_server//')
+# app = Celery('tasks', broker='pyamqp://guest@queue_server//')
+app = Celery('tasks', broker='pyamqp://guest@localhost//')
 
 @app.task
 def add(x, y):

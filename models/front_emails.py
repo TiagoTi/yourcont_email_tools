@@ -32,7 +32,7 @@ def cards_email():
 
     # 2 Agradecimentos
     emails + CardEmail(
-        'Agradecimento',
+        '2º Agradecimento',
         'Adecer ao cliente por escolher a youcont',
         'winner.png',
         'welcome_to_your_cont'
@@ -40,7 +40,7 @@ def cards_email():
 
     # 3 Contract
     emails + CardEmail(
-        'Contrato / Solicitação de docs',
+        '3º Contrato da prestação',
         'Envia cópia do contrato e solicita documentação',
         'dossier.png',
         'contact_for_contract_data'

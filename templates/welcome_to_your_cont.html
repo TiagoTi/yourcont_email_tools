@@ -4,7 +4,7 @@
       <div class="page-header">
           <h1>{{ titulo }}</h1>
       </div>
-      <form form action="welcome_to_your_cont" method="post">
+      <form form action="{{url_for('welcome_to_your_cont')}}" method="post">
         <fieldset>
           <div class="form-group">
             <label for="name">Nome</label>
