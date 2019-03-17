@@ -79,3 +79,14 @@ class ContractEmail(Email):
         self._files_attachement = kwargs['files_names']
 
 
+class MeetingSolicitationEmail(Email):
+
+    def __init__(self, **kwargs):
+        kwargs['text'] = self.template('txt', kwargs['to_name'], 'meeting_solicitation_email')
+        kwargs['html'] = self.template('html', kwargs['to_name'], 'meeting_solicitation_email')
+        super(WelcomeEmail, self).__init__(**kwargs)
+        self._subject = 'A Your Cont gostaria de falar com você!'
+        self._files_names_images = [
+            'main_picture_meeting.png', 'logo_slim.png',
+            'footer_icon_facebook.png', 'footer_icon_instagram.png'
+        ]
