@@ -51,7 +51,7 @@ def cards_email():
         'Convite para Reunião',
         'Email com o link do apper',
         'dossier.png',
-        'meeting_email'
+        'meeting_solicitation_email'
     )
 
     return emails

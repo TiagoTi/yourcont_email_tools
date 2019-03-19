@@ -42,11 +42,11 @@ class Email:
         )
 
     @staticmethod
-    def template(ext, name, template_name):
+    def template(ext, name, template_name, **kwargs):
         return load_tmp(
             'templates',
             'email',
-            template_name, ext).format(name)
+            template_name, ext).format(name, **kwargs)
 
     def to_html(self):
         return self._html
@@ -82,8 +82,20 @@ class ContractEmail(Email):
 class MeetingSolicitationEmail(Email):
 
     def __init__(self, **kwargs):
-        kwargs['text'] = self.template('txt', kwargs['to_name'], 'meeting_solicitation_email')
-        kwargs['html'] = self.template('html', kwargs['to_name'], 'meeting_solicitation_email')
+
+        kwargs['text'] = self.template('txt', kwargs['to_name'], 'meeting_solicitation_email',
+                                       date=kwargs['date'],
+                                       hour1=kwargs['hour1'],
+                                       hour2=kwargs['hour2'],
+                                       link=kwargs['link']
+                                       )
+
+        kwargs['html'] = self.template('html', kwargs['to_name'], 'meeting_solicitation_email',
+            date=kwargs['date'],
+            hour1=kwargs['hour1'],
+            hour2=kwargs['hour2'],
+            link=kwargs['link'])
+
         super(WelcomeEmail, self).__init__(**kwargs)
         self._subject = 'A Your Cont gostaria de falar com você!'
         self._files_names_images = [

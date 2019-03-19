@@ -96,7 +96,11 @@ def meeting_solicitation_email():
     if request.method == 'POST':
         email = MeetingSolicitationEmail(
             to=request.form['email'],
-            to_name=request.form['name']
+            to_name=request.form['name'],
+            date='2019-03-14',
+            hour1='14:00',
+            hour2='19:30',
+            link='meulinkmaroto.com.br'
         )
 
         email.send()
