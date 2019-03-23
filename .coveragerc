@@ -1,0 +1,11 @@
+[run]
+branch = True
+omit =
+    tests/*
+
+[paths]
+source = models/
+         services/
+
+[xml]
+output=coverage/coverage.xml

@@ -8,3 +8,8 @@ e do docker-compose para rodar o app com maior facilidade
 ![alt text](docs/email.png "arch")
 
 [backup](docs/backup.md)
+
+## Ref
+ - https://pytest-cov.readthedocs.io/en/latest/index.html
+ - https://coverage.readthedocs.io/en/v4.5.x/index.html
+ - https://docs.pytest.org/en/latest/

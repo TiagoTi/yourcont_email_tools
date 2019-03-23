@@ -1,7 +1,8 @@
 import os
 from flask import Flask, render_template, request, redirect
 from settings import ADDRESS_WEB, PORT_WEB
-from models.emails import WelcomeEmail, ContractEmail, MeetingSolicitationEmail
+from models.emails import ContractEmail, MeetingSolicitationEmail
+from models.email_welcome import WelcomeEmail
 from models.front_emails import cards_email
 
 app = Flask(__name__)
