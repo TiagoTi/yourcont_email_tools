@@ -14,8 +14,7 @@ def meeting():
         to_name='Tester',
         date='01/01/20001',
         hour1='09:00',
-        hour2='18:40',
-        link='http://www.meeting.com.br'
+        hour2='18:40'
     )
 
 
@@ -25,8 +24,7 @@ def images():
         'logo_slim.png',
         'main_picture_meeting.png',
         'footer_icon_facebook.png',
-        'footer_icon_instagram.png',
-        'footer_icon_appear-in.png'
+        'footer_icon_instagram.png'
     ]
 
 
@@ -67,5 +65,3 @@ def test_dont_have_contratc_email_without_attachemnts():
         MeetingSolicitationEmail(to='tester@test.py', to_name='Tester', date='01/01/20001', hour1='09:00', link='http://www.meeting.com.br')
     with pytest.raises(DateIsRequired):
         MeetingSolicitationEmail(to='tester@test.py', to_name='Tester', hour1='09:00', hour2='18:40', link='http://www.meeting.com.br')
-    with pytest.raises(LinkIsRequired):
-        MeetingSolicitationEmail(to='tester@test.py', to_name='Tester', date='01/01/20001', hour1='09:00', hour2='18:40')

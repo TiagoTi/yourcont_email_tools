@@ -101,8 +101,7 @@ def meeting_solicitation_email():
             to_name=request.form['name'],
             date=request.form['date'],
             hour1=request.form['hour1'],
-            hour2=request.form['hour2'],
-            link=request.form['link']
+            hour2=request.form['hour2']
         )
 
         email.send()
