@@ -48,10 +48,18 @@ def cards_email():
 
     # 4 Meteenging
     emails + CardEmail(
-        'Convite para Reunião',
-        'Email com o link do apper',
+        'Escolha opções para Convite de Reunião',
+        'Email com a proposta',
         'dossier.png',
         'meeting_solicitation_email'
+    )
+
+    # 5 Envio do Linnk
+    emails + CardEmail(
+        'Envio de link do apter nas data x e horario y',
+        'Link do apper',
+        'dossier.png',
+        'call_email'
     )
 
     return emails

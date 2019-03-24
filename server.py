@@ -4,6 +4,7 @@ from settings import ADDRESS_WEB, PORT_WEB
 from models.email_contract import ContractEmail
 from models.email_welcome import WelcomeEmail
 from models.email_meeting import MeetingSolicitationEmail
+from models.email_call import CallEmail
 from models.front_emails import cards_email
 
 app = Flask(__name__)
@@ -111,6 +112,31 @@ def meeting_solicitation_email():
             return render_template('meeting_solicitation_email_error.html')
     else:
         return render_template('meeting_solicitation_email.html')
+
+
+@app.route('/call_email', methods=['GET', 'POST'])
+def call_email():
+    """Call Routes.
+
+    GET -> render a template for type email
+    POST -> send email to costumer.
+    """
+    if request.method == 'POST':
+        email = CallEmail(
+            to=request.form['email'],
+            to_name=request.form['name'],
+            date=request.form['date'],
+            hour1=request.form['hour1'],
+            link=request.form['link']
+        )
+
+        email.send()
+        if email.did_send:
+            return redirect('/')
+        else:
+            return render_template('call_email_error.html')
+    else:
+        return render_template('call_email.html')
 
 
 if __name__ == "__main__":
