@@ -1,0 +1,3 @@
+Confirmação de call
+Conforme combinado segue o link para a call
+no endereço {link}, Dia {date} as {hour1}
