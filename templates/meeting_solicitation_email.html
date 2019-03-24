@@ -1,0 +1,42 @@
+{%extends "template.html"%}
+{% block conteudo%}
+    <div class="container">
+      <div class="page-header">
+          <h1>{{ titulo }}</h1>
+      </div>
+      <form form action="{{url_for('meeting_solicitation_email')}}" method="post">
+        <fieldset>
+          <legend>Email De Agendamento de call</legend>
+          <div class="form-group">
+            <label for="name">Nome</label>
+            <input type="text" id="name" name="name" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="link">Link</label>
+            <input type="link" id="link" name="link" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="hour1">Opção de Hora 1</label>
+            <input type="time" id="hour1" name="hour1" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="hour2">Opção de Hora 2</label>
+            <input type="time" id="hour2" name="hour2" class="form-control">
+          </div>
+
+          <div class="form-group">
+            <label for="date">Dia da Agenda</label>
+            <input type="date" id="date" name="date" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-primary btn-salvar">Enviar</button>
+        </fieldset>
+      </form>
+    </div>
+{% endblock %}

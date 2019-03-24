@@ -1,8 +1,9 @@
 import os
 from flask import Flask, render_template, request, redirect
 from settings import ADDRESS_WEB, PORT_WEB
-from tasks import contract_email_task
-from models.emails import WelcomeEmail, ContractEmail
+from models.email_contract import ContractEmail
+from models.email_welcome import WelcomeEmail
+from models.email_meeting import MeetingSolicitationEmail
 from models.front_emails import cards_email
 
 app = Flask(__name__)
@@ -85,6 +86,32 @@ def contact_for_contract_data():
             'contact_for_contract_data.html',
             files_names=files_names
         )
+
+
+@app.route('/meeting_solicitation_email', methods=['GET', 'POST'])
+def meeting_solicitation_email():
+    """Meeting Solicitation Routes.
+
+    GET -> render a template for type email
+    POST -> send email to costumer.
+    """
+    if request.method == 'POST':
+        email = MeetingSolicitationEmail(
+            to=request.form['email'],
+            to_name=request.form['name'],
+            date=request.form['date'],
+            hour1=request.form['hour1'],
+            hour2=request.form['hour2'],
+            link=request.form['link']
+        )
+
+        email.send()
+        if email.did_send:
+            return redirect('/')
+        else:
+            return render_template('meeting_solicitation_email_error.html')
+    else:
+        return render_template('meeting_solicitation_email.html')
 
 
 if __name__ == "__main__":

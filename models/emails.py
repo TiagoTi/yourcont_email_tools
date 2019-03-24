@@ -34,6 +34,14 @@ class Email:
             'html': self._html,
         }
 
+    @property
+    def images(self):
+        return self._files_names_images
+
+    @property
+    def attachements(self):
+        return self._files_attachement
+
     def send(self):
         self._did_send = send_mailgin_email(
             self.to_payload,
@@ -42,11 +50,11 @@ class Email:
         )
 
     @staticmethod
-    def template(ext, name, template_name):
+    def template(ext, name, template_name, **kwargs):
         return load_tmp(
             'templates',
             'email',
-            template_name, ext).format(name)
+            template_name, ext).format(name, **kwargs)
 
     def to_html(self):
         return self._html
@@ -55,24 +63,8 @@ class Email:
         return self._text
 
 
-class WelcomeEmail(Email):
-
-    def __init__(self, **kwargs):
-        kwargs['text'] = self.template('txt', kwargs['to_name'], 'welcome_to_your_cont')
-        kwargs['html'] = self.template('html', kwargs['to_name'], 'welcome_to_your_cont')
-        super(WelcomeEmail, self).__init__(**kwargs)
-        self._subject = 'Your Cont {}!'.format(kwargs['to_name'])
-        self._files_names_images = ['file.jpg', 'logo_slim.png', 'face.png', 'insta.png']
 
 
-class ContractEmail(Email):
 
-    def __init__(self, **kwargs):
-        kwargs['text'] = self.template('txt', kwargs['to_name'], 'contact_for_contract_data')
-        kwargs['html'] = self.template('html', kwargs['to_name'], 'contact_for_contract_data')
-        super(ContractEmail, self).__init__(**kwargs)
-        self._subject = 'Your Cont {}!'.format(kwargs['to_name'])
-        self._files_names_images = ['service-contract.png', 'logo_slim.png', 'face.png', 'insta.png']
-        self._files_attachement = kwargs['files_names']
 
 

@@ -15,3 +15,8 @@ pyclean:
 
 dockerup_dev:
 	docker-compose -f docker-compose.yaml -f docker-compose-network.yaml up -d
+
+template:
+	bin/find_and_change.sh
+template-dev:
+	bin/find_and_change.sh dev

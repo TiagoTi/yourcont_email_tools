@@ -21,30 +21,39 @@
                 style="border-collapse: collapse; ">
             <tr>
                 <td align="center" bgcolor="#f6f6f6" style="padding: 0px 0 0px 0;">
-                    <!--<img alt="logo" width="100%" height="auto" style="display: block;" src="cid:logo_land.png"/>-->
-                    <img alt="logo" width="100%" height="auto" style="display: block;" src="../../../static/email/img/logo_land.png"/>
+                    <img alt="logo" width="100%" height="auto" style="display: block;" src="cid:logo_slim.png"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    <img alt="logo" width="100%" height="auto" style="display: block;" src="cid:main_picture_meeting.png"/>
                 </td>
             </tr>
 
             <tr>
                 <td bgcolor="#f6f6f6" style="padding: 10px 15px;">
                     <h3>
-					Olá <samp class="usuario_destacado" style="color: #000; font-weight: bolder;">{0}!</samp>
-				</h3>
-                <p style="text-indent: 1.5em;">Podemos agenda no dia {1} as {2} ou  {3}</p>
-                    <p style="text-indent: 1.5em;">Envie um email há {4} para poder lhe enviar o link para nossa reunião online.</p>
+					    Olá <samp style="color: #000; font-weight: bolder;">{0}!</samp>
+				    </h3>
+                    <p>Agora que você já concluiu duas etapas, queremos saber o melhor horário para nossa reunião por vídeo chamada.</p>
+                    <p style="text-indent: 1.5em;">Podemos agenda no dia {date} as {hour1} ou  {hour2}</p>
+                    <p style="text-indent: 1.5em;">Envie um email a <a href="mailto:atendimento@yourcont.com.br?Subject=Confirmação de data" target="_top"> atendimento@yourcont.com.br </a> com o titulo: <b>Confirmação de data</b> para a confirmação de nossa reunião online.</p>
+                    <p>Link da reunião {link}</p>
                 </td>
             </tr>
             <tr>
                 <td style="background-color: #828AC5; padding: 5px 5px 5px 5px;">
                     <a href="https://www.facebook.com" style="margin: 5px; padding: 5px; text-decoration:none;">
-                        <!--<img class="my_net_icon" alt src="cid:face.png" style="background: #f6f6f6; border: 2px solid #000; height: 20px; margin: 4px; padding: 3px; width: 20px;">-->
-                        <img width="20" height="20" alt="" src="../../../static/email/img/face.png" />
+                        <img class="my_net_icon" alt src="cid:footer_icon_facebook.png" style="background: #f6f6f6; border: 2px solid #000; height: 20px; margin: 4px; padding: 3px; width: 20px;">
                     </a>
 
                     <a href="https://www.instagram.com/" style="margin: 5px; padding: 5px; text-decoration:none;">
-                        <!--<img class="my_net_icon" alt src="cid:insta.png" style="background: #f6f6f6; border: 2px solid #000; height: 20px; margin: 4px; padding: 3px; width: 20px;">-->
-                        <img width="20" height="20"  alt="" src="../../../static/email/img/insta.png" />
+                        <img class="my_net_icon" alt src="cid:footer_icon_instagram.png" style="background: #f6f6f6; border: 2px solid #000; height: 20px; margin: 4px; padding: 3px; width: 20px;">
+                    </a>
+
+                    <a href="{link}" style="margin: 5px; padding: 5px; text-decoration:none;">
+                        <img alt src="cid:footer_icon_appear-in.png" style="background: #f6f6f6; border: 2px solid #000; height: 20px; margin: 4px; padding: 3px; width: 20px;"/>
                     </a>
                 </td>
             </tr>
