@@ -17,8 +17,11 @@ class MeetingSolicitationEmail(Email):
         super(MeetingSolicitationEmail, self).__init__(**kwargs)
         self._subject = 'A Your Cont gostaria de falar com você!'
         self._files_names_images = [
-            'main_picture_meeting.png', 'logo_slim.png',
-            'footer_icon_facebook.png', 'footer_icon_instagram.png'
+            'main_picture_meeting.png',
+            'logo_slim.png',
+            'footer_icon_facebook.png',
+            'footer_icon_instagram.png',
+            'footer_icon_appear-in.png'
         ]
 
     @staticmethod

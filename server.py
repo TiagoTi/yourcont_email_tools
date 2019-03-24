@@ -1,8 +1,9 @@
 import os
 from flask import Flask, render_template, request, redirect
 from settings import ADDRESS_WEB, PORT_WEB
-from models.emails import ContractEmail, MeetingSolicitationEmail
+from models.email_contract import ContractEmail
 from models.email_welcome import WelcomeEmail
+from models.email_meeting import MeetingSolicitationEmail
 from models.front_emails import cards_email
 
 app = Flask(__name__)
@@ -98,10 +99,10 @@ def meeting_solicitation_email():
         email = MeetingSolicitationEmail(
             to=request.form['email'],
             to_name=request.form['name'],
-            date='2019-03-14',
-            hour1='14:00',
-            hour2='19:30',
-            link='meulinkmaroto.com.br'
+            date=request.form['date'],
+            hour1=request.form['hour1'],
+            hour2=request.form['hour2'],
+            link=request.form['link']
         )
 
         email.send()
