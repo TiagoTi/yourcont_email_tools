@@ -14,11 +14,11 @@ services:
     volumes:
       - .:/app
     command: ["gunicorn", "--bind", "0.0.0.0:8080", "--workers", "1", "--threads", "1", "wsgi:app"]
-    depends_on:
-      - queue
-      - worker
-    links:
-      - queue
+#    depends_on:
+#      - queue
+#      - worker
+#    links:
+#      - queue
 #  worker:
 #    container_name: worker
 #    image: ${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_VERSION}
