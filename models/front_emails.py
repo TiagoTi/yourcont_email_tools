@@ -50,7 +50,7 @@ def cards_email():
     emails + CardEmail(
         'Escolha opções para Convite de Reunião',
         'Email com a proposta',
-        'dossier.png',
+        'question.png',
         'meeting_solicitation_email'
     )
 
@@ -58,7 +58,7 @@ def cards_email():
     emails + CardEmail(
         'Envio de link do apter nas data x e horario y',
         'Link do apper',
-        'dossier.png',
+        'video-conference.png',
         'call_email'
     )
 
