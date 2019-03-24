@@ -65,37 +65,6 @@ class Email:
 
 
 
-class ContractEmail(Email):
-
-    def __init__(self, **kwargs):
-        kwargs['text'] = self.template('txt', kwargs['to_name'], 'contact_for_contract_data')
-        kwargs['html'] = self.template('html', kwargs['to_name'], 'contact_for_contract_data')
-        super(ContractEmail, self).__init__(**kwargs)
-        self._subject = 'Your Cont {}!'.format(kwargs['to_name'])
-        self._files_names_images = ['main_picture_contract.png', 'logo_slim.png', 'footer_icon_facebook.png', 'footer_icon_instagram.png']
-        self._files_attachement = kwargs['files_names']
 
 
-class MeetingSolicitationEmail(Email):
 
-    def __init__(self, **kwargs):
-
-        kwargs['text'] = self.template('txt', kwargs['to_name'], 'meeting_solicitation_email',
-                                       date=kwargs['date'],
-                                       hour1=kwargs['hour1'],
-                                       hour2=kwargs['hour2'],
-                                       link=kwargs['link']
-                                       )
-
-        kwargs['html'] = self.template('html', kwargs['to_name'], 'meeting_solicitation_email',
-            date=kwargs['date'],
-            hour1=kwargs['hour1'],
-            hour2=kwargs['hour2'],
-            link=kwargs['link'])
-
-        super(WelcomeEmail, self).__init__(**kwargs)
-        self._subject = 'A Your Cont gostaria de falar com você!'
-        self._files_names_images = [
-            'main_picture_meeting.png', 'logo_slim.png',
-            'footer_icon_facebook.png', 'footer_icon_instagram.png'
-        ]

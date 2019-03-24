@@ -1,4 +1,3 @@
-
 from models.email_welcome import WelcomeEmail
 import pytest
 
@@ -46,34 +45,3 @@ def test_welcome_email_templates_read_deploy(welcome):
     assert '<!--' not in welcome.to_payload['html']
     assert '-->' not in welcome.to_payload['html']
     assert '../../static/email/img/' not in welcome.to_payload['html']
-
-
-    # self._to_name = kwargs['to_name']
-    # self._subject = kwargs['subject'] if hasattr(kwargs, 'subject') else 'Your Cont'
-    # self._text = kwargs['text']
-    # self._html = kwargs['html']
-    # self._files_names_images = []
-    # self._files_attachement = []
-#
-# def test_basic():
-#     text = 'Congratulations Tiago, you just sent an email with Mailgun!  You are truly awesome!'
-#     html = '<h1>oi</h1>'
-#
-#     email = Email(to_name='Destinatary', to='destinaratio@email.com', text=text, html=html)
-#
-#     expected_payload = {
-#         "from": "test@email.com",
-#         "to": "Destinatary <destinaratio@email.com>",
-#         "subject": "Your Cont",
-#         "text": text,
-#         "html": html
-#     }
-#     assert email.to_payload == expected_payload
-#
-#
-# def test_welcome():
-#
-#     email = WelcomeEmail(to_name='Destinatary', to='destinaratio@email.com')
-#     assert email.subject == "Your Cont Destinatary!"
-#     assert email.to_text() == helper_load_template('templates', 'email', 'welcome_to_your_cont', 'txt')\
-#         .format('Destinatary')
