@@ -25,3 +25,12 @@ def test_empty_db(client):
 
     # rv = client.get('/')
     # assert b'Escolha um email para enviar:' in rv.data
+
+
+def test_get_routine_docs(client):
+    rv = client.get('/routine_docs')
+    assert 'Rotina de Documenta' in rv.data
+
+
+def test_post_routine_docs(client):
+    pass

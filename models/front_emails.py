@@ -62,4 +62,12 @@ def cards_email():
         'call_email'
     )
 
+    # 6 Rotina de documentos
+    emails + CardEmail(
+        'Rotina de envnio de documentos',
+        'Rotina de documentos',
+        'dossier.png',
+        'routine_docs'
+    )
+
     return emails

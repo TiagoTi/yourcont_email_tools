@@ -5,6 +5,7 @@ from models.email_contract import ContractEmail
 from models.email_welcome import WelcomeEmail
 from models.email_meeting import MeetingSolicitationEmail
 from models.email_call import CallEmail
+from models.email_routine_docs_email import RoutineDocsEmail
 from models.front_emails import cards_email
 
 app = Flask(__name__)
@@ -58,12 +59,6 @@ def welcome_to_your_cont():
 def contact_for_contract_data():
     if request.method == 'POST':
         files_names = request.form.getlist('files_names')
-
-        # contract_email_task.delay(
-        #     to=request.form['email'],
-        #     to_name=request.form['name'],
-        #     files_names=files_names
-        # )
         ContractEmail(
             to=request.form['email'],
             to_name=request.form['name'],
@@ -137,6 +132,35 @@ def call_email():
             return render_template('call_email_error.html')
     else:
         return render_template('call_email.html')
+
+
+@app.route('/routine_docs', methods=['GET', 'POST'])
+def routine_docs():
+    if request.method == 'POST':
+        files_names = request.form.getlist('files_names')
+        RoutineDocsEmail(
+            to=request.form['email'],
+            to_name=request.form['name'],
+            files_names=files_names
+        ).send()
+        return redirect('/')
+    else:
+        files_names = []
+        i = 0
+        for item in os.listdir('./static/docs'):
+            files_names.append(
+                {
+                    'id': f'file_{i}',
+                    'text': f'{item}'.title(),
+                    'value': f'{item}',
+                }
+            )
+            i += 1
+
+        return render_template(
+            'routine_docs.html',
+            files_names=files_names
+        )
 
 
 if __name__ == "__main__":
