@@ -12,12 +12,15 @@ def send(data, file_names, attached_filename):
             files.append(("attachment", open("static/docs/{}".format(attachment), 'rb')))
 
     print("Files : ", files)
+    import pdb
+    pdb.set_trace()
     response = requests.post(
         Configuration.MAILGUN_API_URL,
         auth=("api", Configuration.MAILGUN_API_AUTH),
         files=files,
         data=data
     )
+
 
     if response.status_code == 200:
         return True

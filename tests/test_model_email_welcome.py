@@ -1,5 +1,9 @@
 from models.email_welcome import WelcomeEmail
 import pytest
+import mock
+from mock import Mock
+from mock import patch
+from services import mailgun
 
 
 @pytest.fixture()
@@ -45,3 +49,11 @@ def test_welcome_email_templates_read_deploy(welcome):
     assert '<!--' not in welcome.to_payload['html']
     assert '-->' not in welcome.to_payload['html']
     assert '../../static/email/img/' not in welcome.to_payload['html']
+
+
+@patch('requests.post')
+def test_welcome_email_send(mock_return):
+    mock_return.return_value = {'status_code': 200}
+    e = WelcomeEmail(to='tiagoandroidti@gmail.com', to_name='Tester')
+    e.send()
+    assert e.did_send is True
