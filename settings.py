@@ -10,9 +10,9 @@ class Configuration:
     MAILGUN_API_AUTH = os.getenv('MAILGUN_API_AUTH')
 
 
-ADDRESS_WEB = os.getenv('ADDRESS_WEB')
-PORT_WEB = os.getenv('PORT_WEB')
+ADDRESS_WEB = os.getenv('ADDRESS_WEB',  '0.0.0.0')
+PORT_WEB = os.getenv('PORT_WEB', 5000)
 RABBITMQ_DEFAULT_USER = os.getenv('RABBITMQ_DEFAULT_USER')
 RABBITMQ_DEFAULT_HOST = os.getenv('RABBITMQ_DEFAULT_HOST')
-DATABASE = os.getenv('DATABASE')
-SECRET_KEY = os.getenv('SECRET_KEY')
+DATABASE = os.getenv('DATABASE', 'test.sqlite3')
+SECRET_KEY = os.getenv('SECRET_KEY', '123')
