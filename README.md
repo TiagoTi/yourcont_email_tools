@@ -15,3 +15,5 @@ e do docker-compose para rodar o app com maior facilidade
  - https://docs.pytest.org/en/latest/
  - http://flask.pocoo.org/docs/1.0/testing/
  - http://flask.pocoo.org/docs/0.12/testing/
+
+ .
