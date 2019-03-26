@@ -1,5 +1,6 @@
 import os
-from flask import Flask, render_template, request, redirect
+import sqlite3
+from flask import Flask, render_template, request, redirect, g, url_for, flash
 from settings import ADDRESS_WEB, PORT_WEB
 from models.email_contract import ContractEmail
 from models.email_welcome import WelcomeEmail
@@ -7,8 +8,15 @@ from models.email_meeting import MeetingSolicitationEmail
 from models.email_call import CallEmail
 from models.email_routine_docs_email import RoutineDocsEmail
 from models.front_emails import cards_email
+from settings import DATABASE, SECRET_KEY
 
 app = Flask(__name__)
+app.config.update(
+    dict(
+        DATABASE=os.path.join(app.root_path, DATABASE),
+        SECRET_KEY=SECRET_KEY
+    )
+)
 
 #cards
 cards_email = cards_email()
@@ -161,6 +169,53 @@ def routine_docs():
             'routine_docs.html',
             files_names=files_names
         )
+
+
+@app.route('/customer', methods=['GET', 'POST'])
+def customer():
+    if request.method == 'POST':
+        db = get_db()
+        db.execute(
+            'insert into customer (name, email) values (?, ?)',
+            [request.form['name'], request.form['email']]
+        )
+        db.commit()
+        flash('New entry was successfully posted')
+        return redirect(url_for('customer'))
+    else:
+        db = get_db()
+        cur = db.execute('select id, name, email from customer order by id desc')
+        customers = cur.fetchall()
+        return render_template('customer.html', customers=customers)
+
+def connect_db():
+    """Connects to the specific database."""
+    rv = sqlite3.connect(app.config['DATABASE'])
+    rv.row_factory = sqlite3.Row
+    return rv
+
+def get_db():
+    """Opens a new database connection if there is none yet for the
+    current application context.
+    """
+    if not hasattr(g, 'sqlite_db'):
+        g.sqlite_db = connect_db()
+    return g.sqlite_db
+
+
+def init_db():
+    """Clear existing data and create new tables."""
+    db = get_db()
+
+    with app.open_resource('schema.sql') as f:
+        db.executescript(f.read().decode('utf8'))
+
+
+@app.teardown_appcontext
+def close_db(error):
+    """Closes the database again at the end of the request."""
+    if hasattr(g, 'sqlite_db'):
+        g.sqlite_db.close()
 
 
 if __name__ == "__main__":
