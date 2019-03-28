@@ -1,5 +1,6 @@
 import requests
 from settings import Configuration
+import pdb
 
 
 def send(data, file_names, attached_filename):
@@ -12,19 +13,15 @@ def send(data, file_names, attached_filename):
             files.append(("attachment", open("static/docs/{}".format(attachment), 'rb')))
 
     print("Files : ", files)
-    import pdb
-    pdb.set_trace()
-    response = requests.post(
-        Configuration.MAILGUN_API_URL,
-        auth=("api", Configuration.MAILGUN_API_AUTH),
-        files=files,
-        data=data
-    )
 
-
-    if response.status_code == 200:
+    try:
+        r = requests.post(
+            Configuration.MAILGUN_API_URL,
+            auth=("api", Configuration.MAILGUN_API_AUTH),
+            files=files,
+            data=data
+        )
         return True
-    else:
-        print(response)
-        print("Por que não foi possíevel enviar para o mailgin ? :-(")
-        return False
+    except Exception as e:
+        print('fail', e)
+

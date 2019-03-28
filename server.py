@@ -2,6 +2,7 @@ import os
 import sqlite3
 from flask import Flask, render_template, request, redirect, g, url_for, flash
 from settings import ADDRESS_WEB, PORT_WEB
+from models.email_information import InformationEmail
 from models.email_contract import ContractEmail
 from models.email_welcome import WelcomeEmail
 from models.email_meeting import MeetingSolicitationEmail
@@ -187,6 +188,28 @@ def customer():
         cur = db.execute('select id, name, email from customer order by id desc')
         customers = cur.fetchall()
         return render_template('customer.html', customers=customers)
+
+
+@app.route('/routine_infos', methods=['GET', 'POST'])
+def routine_infos():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+
+        info_email = InformationEmail(to=email, to_name=name)
+        info_email.send()
+        if info_email.did_send:
+            message = f'Email enviado com sucesso para: {name} <{email}>'
+            flash(message)
+            return redirect('/')
+        else:
+            message = f'Email falho para: {name} <{email}>'
+            flash(message)
+            return render_template('routine_infos_error.html')
+
+    else:
+        return render_template('routine_infos.html')
+
 
 def connect_db():
     """Connects to the specific database."""

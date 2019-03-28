@@ -16,6 +16,22 @@
 				<a href="https://www.namecheap.com/">Namecheap</a>
             </nav>
 		</header>
+		<section>
+			<div>
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+							<div class="alert alert-info alert-dismissible  show" role="alert">
+								{{message}}
+								<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+						{% endfor %}
+					{% endif %}
+				{% endwith %}
+        	</div>
+		</section>
 		{% block conteudo %}
 		{% endblock %}
 		<script src="../static/js/jquery.js" type="text/javascript"></script>

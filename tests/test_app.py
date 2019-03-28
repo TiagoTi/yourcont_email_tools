@@ -43,3 +43,4 @@ def test_add_customer(client):
 
     assert b'<td>Test User</td>' in response.data
     assert b'<td>user@test.com</td>' in response.data
+

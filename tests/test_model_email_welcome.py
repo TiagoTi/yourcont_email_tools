@@ -53,7 +53,7 @@ def test_welcome_email_templates_read_deploy(welcome):
 
 @patch('requests.post')
 def test_welcome_email_send(mock_return):
-    mock_return.return_value = {'status_code': 200}
-    e = WelcomeEmail(to='tiagoandroidti@gmail.com', to_name='Tester')
+    mock_return.return_value = 200
+    e = WelcomeEmail(to='test@tester.com', to_name='Tester')
     e.send()
     assert e.did_send is True
