@@ -33,47 +33,47 @@ def cards_email():
     # 2 Agradecimentos
     emails + CardEmail(
         '2º Agradecimento',
-        'Adecer ao cliente por escolher a youcont',
+        'Agradecer ao cliente por escolher a youcont',
         'winner.png',
         'welcome_to_your_cont'
     )
 
     # 3 Contract
     emails + CardEmail(
-        '3º Contrato da prestação',
-        'Envia cópia do contrato e solicita documentação',
+        '3º Contrato da contabilidade',
+        'Enviar cópia do contrato e solicitar a documentação pessoal',
         'dossier.png',
         'contact_for_contract_data'
     )
 
     # 4 Meteenging
     emails + CardEmail(
-        'Escolha opções para Convite de Reunião',
-        'Email com a proposta',
+        '4º Escolha opções para Convite de Reunião',
+        'Horários da reunião',
         'question.png',
         'meeting_solicitation_email'
     )
 
     # 5 Envio do Linnk
     emails + CardEmail(
-        'Envio de link do apter nas data x e horario y',
-        'Link do apper',
+        '5º Envio de link do apper na data x e horario y',
+        'Enviar somente link do apper mencionando a dada e horário escolhido',
         'video-conference.png',
         'call_email'
     )
 
     # 6 Rotina de documentos
     emails + CardEmail(
-        'Rotina de envnio de documentos',
-        'Rotina de documentos',
+        '6º Documentação da empresa e destrato do antigo contador',
+        'Documentação da empresa e destrato do antigo contador',
         'dossier.png',
         'routine_docs'
     )
 
     # 7 Rotina de documentos
     emails + CardEmail(
-        'Rotina De Informações',
-        'Rotina De Informações',
+        '7º Rotina de trabalho',
+        'Rotina de trabalho',
         'dossier.png',
         'routine_infos'
     )
